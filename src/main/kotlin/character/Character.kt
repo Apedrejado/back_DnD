@@ -14,15 +14,11 @@ class Character(
     val background: String,  // Novo atributo: Background do personagem
     baseAttributes: Attributes,
 ) {
-    private var _baseAttributes: Attributes = baseAttributes
-    private var _adjustedAttributes: Attributes = race.applyRaceBonuses(_baseAttributes)
+    // Atributos base fornecidos
+    private val baseAttributes: Attributes = baseAttributes
 
-    // Getters para os atributos privados
-    val baseAttributes: Attributes
-        get() = _baseAttributes
-
-    val adjustedAttributes: Attributes
-        get() = _adjustedAttributes
+    // Aplica os bônus da raça aos atributos base
+    private val adjustedAttributes: Attributes = race.applyRaceBonuses(baseAttributes)
 
     // Modificadores de atributos
     val strength_Modifier: Int = calculateModifier(adjustedAttributes.strength)
