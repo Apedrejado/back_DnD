@@ -1,5 +1,7 @@
     package character
 
+    import org.example.utils.Calculator
+
     data class Attributes(
         val strength: Int,
         val dexterity: Int,
@@ -8,25 +10,23 @@
         val wisdom: Int,
         val charisma: Int
     ) {
+        private val calculator = Calculator()
+
         val strengthModifier: Int
-            get() = calculateModifier(strength)
+            get() = calculator.calculateModifier(strength)
 
         val dexterityModifier: Int
-            get() = calculateModifier(dexterity)
+            get() = calculator.calculateModifier(dexterity)
 
         val constitutionModifier: Int
-            get() = calculateModifier(constitution)
+            get() = calculator.calculateModifier(constitution)
 
         val intelligenceModifier: Int
-            get() = calculateModifier(intelligence)
+            get() = calculator.calculateModifier(intelligence)
 
         val wisdomModifier: Int
-            get() = calculateModifier(wisdom)
+            get() = calculator.calculateModifier(wisdom)
 
         val charismaModifier: Int
-            get() = calculateModifier(charisma)
-
-        private fun calculateModifier(attribute: Int): Int {
-            return (attribute - 10) / 2
-        }
+            get() = calculator.calculateModifier(charisma)
     }
